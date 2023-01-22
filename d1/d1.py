@@ -1,16 +1,18 @@
 class RPS:
+    def __init__(self, inputs):
+        self.inputs = self.process_inputs(inputs)
+
     def process_inputs(self, inputs):
-        # process file of space separated round input pairs and
-        # newline separated rounds into a list of tuples
-        return
+        """ process file of space separated round input pairs and
+        newline separated rounds into a list of tuples. """
+        return inputs
 
-    def play(self, inputs):
-        # Round()
-        self.inputs = inputs
-
+    def play(self):
+        """Play a game of Rock Paper Scissors. Player choises given in inputs """
+    
         rps_round = Round()
 
-        for choices in inputs:
+        for choices in self.inputs:
             outcome = rps_round.calculate_outcome(choices)
             print(outcome)
 
@@ -44,8 +46,8 @@ def main():
     #    f.readline()
     inputs = [("A", "Y"), ("B", "T"), ("C", "Z")]
 
-    game = RPS()  # A: rock VS. Y: scissors --> Y: scissors wins
-    game.play(inputs)
+    game = RPS(inputs)  # A: rock VS. Y: scissors --> Y: scissors wins
+    game.play()
 
 
 if __name__ == "__main__":
