@@ -3,13 +3,22 @@ class RPS:
         self.inputs = self.process_inputs(inputs)
 
     def process_inputs(self, inputs):
-        """ process file of space separated round input pairs and
-        newline separated rounds into a list of tuples. """
-        return inputs
+        """Process file of space separated round input pairs and
+        newline separated rounds into a list of tuples."""
+
+        with open(f"d1/{inputs}", "r") as f:
+            inputs_processed = []
+
+            for line in f.readlines():
+                line_trimmed_and_splitted = line.strip("\n").split(" ")
+                tuple_line_trimmed = tuple(line_trimmed_and_splitted)
+                inputs_processed.append(tuple_line_trimmed)
+
+        return inputs_processed
 
     def play(self):
-        """Play a game of Rock Paper Scissors. Player choises given in inputs """
-    
+        """Play a game of Rock Paper Scissors. Player choices given in inputs."""
+
         rps_round = Round()
 
         for choices in self.inputs:
@@ -44,9 +53,10 @@ class Round:
 def main():
     # with open('inputs.txt', 'r') as f:
     #    f.readline()
+    inputs_text = "A Y\nB T\nC Z"
     inputs = [("A", "Y"), ("B", "T"), ("C", "Z")]
 
-    game = RPS(inputs)  # A: rock VS. Y: scissors --> Y: scissors wins
+    game = RPS("inputs_sample.txt")  # A: rock VS. Y: scissors --> Y: scissors wins
     game.play()
 
 
