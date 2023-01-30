@@ -3,13 +3,17 @@ class RPS:
         self.inputs = self.process_inputs(inputs)
 
     def process_inputs(self, inputs):
-        """Process file of space separated round input pairs and
-        newline separated rounds into a list of tuples."""
+        """Process file of inputs into a list of tuples.
+        Translate inputs to use same coding for same inputs."""
 
-        with open(f"d1/{inputs}", "r") as f:
+        # X: rock, Y: paper, Z: scissors
+        translations = {"X": "A", "Y": "B", "Z": "C"}
+
+        with open(f"d1/{inputs}", "r", encoding="UTF-8") as f:
             inputs_processed = []
 
             for line in f.readlines():
+                line.translate(translations)
                 line_trimmed_and_splitted = line.strip("\n").split(" ")
                 tuple_line_trimmed = tuple(line_trimmed_and_splitted)
                 inputs_processed.append(tuple_line_trimmed)
@@ -24,6 +28,7 @@ class RPS:
         for choices in self.inputs:
             outcome = rps_round.calculate_outcome(choices)
             print(outcome)
+
 
 class Round:
     def calculate_outcome(self, choices):
