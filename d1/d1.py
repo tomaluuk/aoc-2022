@@ -25,26 +25,27 @@ class RPS:
             outcome = rps_round.calculate_outcome(choices)
             print(outcome)
 
-
 class Round:
     def calculate_outcome(self, choices):
+        """Calculates the outcome of the game."""
         # {'Rock': 'A', 'Paper': 'B', 'Scissors': 'C'}
         # {'Rock': 'X', 'Paper': 'Y', 'Scissors': 'Z'}
-        self.choices = choices
+        def __init__(self, choices):
+            self.choices = choices
 
-        if self.choices[0] not in ("A", "B", "C") or self.choices[1] not in (
+        if choices[0] not in ("A", "B", "C") or choices[1] not in (
             "X",
             "Y",
             "Z",
         ):
-            return f"invalid inputs: {self.choices[0]}, {self.choices[1]}"
+            return f"invalid inputs: {choices[0]}, {choices[1]}"
 
-        if self.choices[0] == self.choices[1]:
+        if choices[0] == choices[1]:
             return "draw: {}"
 
         p1_wins = [("A", "Z"), ("B", "X"), ("C," "Y")]
 
-        if self.choices in (p1_wins):
+        if choices in (p1_wins):
             return "p1 wins"
         else:
             return "p2 wins"
