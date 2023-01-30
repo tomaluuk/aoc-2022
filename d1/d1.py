@@ -6,15 +6,19 @@ class RPS:
         """Process file of inputs into a list of tuples.
         Translate inputs to use same coding for same inputs."""
 
+        # Initialize translations to uniform input coding 
         # X: rock, Y: paper, Z: scissors
-        translations = {"X": "A", "Y": "B", "Z": "C"}
+        trantab = str.maketrans("XYZ", "ABC")
 
         with open(f"d1/{inputs}", "r", encoding="UTF-8") as f:
             inputs_processed = []
-
+    
             for line in f.readlines():
-                line.translate(translations)
-                line_trimmed_and_splitted = line.strip("\n").split(" ")
+                # Translate XYZ --> ABC
+                line_translated = line.translate(trantab)
+
+                # Convert str to tuples, combine to a list of tuples
+                line_trimmed_and_splitted = line_translated.strip("\n").split(" ")
                 tuple_line_trimmed = tuple(line_trimmed_and_splitted)
                 inputs_processed.append(tuple_line_trimmed)
 
