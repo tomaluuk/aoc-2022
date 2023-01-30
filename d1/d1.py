@@ -1,6 +1,8 @@
 class RPS:
     def __init__(self, inputs):
         self.inputs = self.process_inputs(inputs)
+        self.p1_scores = []
+        self.p2_scores = []
 
     def process_inputs(self, inputs):
         """Process file of inputs into a list of tuples.
@@ -27,19 +29,19 @@ class RPS:
     def play(self):
         """Play a game of Rock Paper Scissors. Player choices given in inputs."""
 
-        results = []
-
         for choices in self.inputs:
             new_round = Round(choices)
             outcome = new_round.calculate_outcome()
-            results.append(outcome)
+            self.p1_scores.append(outcome[0])
+            self.p2_scores.append(outcome[1])
 
-        print(results)
+        # print(self.p1_scores)
 
 
 class Round:
     def __init__(self, choices):
         self.choices = choices
+        self.points = (0, 0)
 
     def calculate_outcome(self):
         """Calculates the outcome of the game."""
@@ -54,14 +56,14 @@ class Round:
             return f"invalid inputs: {self.choices[0]}, {self.choices[1]}"
 
         if self.choices[0] == self.choices[1]:
-            return "draw"
+            return (3, 3)
 
         p1_wins = [("A", "C"), ("B", "A"), ("C", "B")]
 
         if self.choices in (p1_wins):
-            return "p1 wins"
+            return (6, 0)
         else:
-            return "p2 wins"
+            return (0, 6)
 
 
 def main():
