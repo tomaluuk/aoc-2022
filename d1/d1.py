@@ -23,11 +23,14 @@ class RPS:
     def play(self):
         """Play a game of Rock Paper Scissors. Player choices given in inputs."""
 
-        rps_round = Round()
+        results = []
 
         for choices in self.inputs:
-            outcome = rps_round.calculate_outcome(choices)
-            print(outcome)
+            new_round = Round()
+            outcome = new_round.calculate_outcome(choices)
+            results.append(outcome)
+
+        print(results)
 
 
 class Round:
