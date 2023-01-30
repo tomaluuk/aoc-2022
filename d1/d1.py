@@ -57,6 +57,7 @@ class Round:
     # Points given for the choice made in a Round
     # A -> Rock, B -> Paper, C -> Scissors
     dict_choice_points = {"A": 1, "B": 2, "C": 3}
+    p1_winning_combinations = [("A", "C"), ("B", "A"), ("C", "B")]
 
     def __init__(self, choices):
         self.choices = choices
@@ -85,9 +86,7 @@ class Round:
             self.points[1] += 3
             return self
 
-        p1_wins = [("A", "C"), ("B", "A"), ("C", "B")]
-
-        if self.choices in (p1_wins):
+        if self.choices in (self.p1_winning_combinations):
             self.points[0] += 6
             return self
         else:
@@ -99,9 +98,9 @@ def main():
     game = RPS("inputs.txt")  # A: rock VS. Y: scissors --> Y: scissors wins
     game.play()
 
-    print('Total scores after tournament')
-    print(f'My score: {game.p1_score}')
-    print(f'Opponents score: {game.p2_score}')
+    print("Total scores after tournament")
+    print(f"My score: {game.p1_score}")
+    print(f"Opponents score: {game.p2_score}")
 
 
 if __name__ == "__main__":
