@@ -1,8 +1,16 @@
 class RPS:
     def __init__(self, inputs):
         self.inputs = self.process_inputs(inputs)
-        self.p1_scores = []
-        self.p2_scores = []
+        self.p1_round_points = []
+        self.p2_round_points = []
+
+    @property
+    def p1_score(self):
+        return sum(self.p1_round_points)
+
+    @property
+    def p2_score(self):
+        return sum(self.p2_round_points)
 
     def process_inputs(self, inputs):
         """Process file of inputs into a list of tuples.
@@ -32,8 +40,8 @@ class RPS:
         for choices in self.inputs:
             new_round = Round(choices)
             outcome = new_round.calculate_outcome()
-            self.p1_scores.append(outcome[0])
-            self.p2_scores.append(outcome[1])
+            self.p1_round_points.append(outcome[0])
+            self.p2_round_points.append(outcome[1])
 
         # print(self.p1_scores)
 
@@ -69,6 +77,8 @@ class Round:
 def main():
     game = RPS("inputs.txt")  # A: rock VS. Y: scissors --> Y: scissors wins
     game.play()
+
+    print(game.p1_score)
 
 
 if __name__ == "__main__":
