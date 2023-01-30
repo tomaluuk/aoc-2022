@@ -56,7 +56,7 @@ def main():
     inputs_text = "A Y\nB T\nC Z"
     inputs = [("A", "Y"), ("B", "T"), ("C", "Z")]
 
-    game = RPS("inputs_sample.txt")  # A: rock VS. Y: scissors --> Y: scissors wins
+    game = RPS("inputs.txt")  # A: rock VS. Y: scissors --> Y: scissors wins
     game.play()
 
 
