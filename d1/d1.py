@@ -1,4 +1,5 @@
 class RPS:
+    """Represents a game of Rock, Paper, Scissors."""
     def __init__(self, inputs):
         self.inputs = self.process_inputs(inputs)
         self.p1_round_points = []
@@ -37,6 +38,8 @@ class RPS:
     def play(self):
         """Play a game of Rock Paper Scissors. Player choices given in inputs."""
 
+        # Loop through a list of tuples holding player choices 
+        # for individual Rounds
         for choices in self.inputs:
             new_round = Round(choices)
             outcome = new_round.calculate_outcome()
@@ -47,14 +50,16 @@ class RPS:
 
 
 class Round:
+    """
+        Represents a single round in a game of Rock, Paper, Scissors.
+        A Round can end in p1 winning, p2 winning, or a draw.
+    """
     def __init__(self, choices):
         self.choices = choices
         self.points = (0, 0)
 
     def calculate_outcome(self):
         """Calculates the outcome of the game."""
-        # {'Rock': 'A', 'Paper': 'B', 'Scissors': 'C'}
-        # {'Rock': 'X', 'Paper': 'Y', 'Scissors': 'Z'}
 
         if self.choices[0] not in ("A", "B", "C") or self.choices[1] not in (
             "A",
@@ -79,6 +84,7 @@ def main():
     game.play()
 
     print(game.p1_score)
+    print(game.p2_score)
 
 
 if __name__ == "__main__":
