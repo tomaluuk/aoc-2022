@@ -25,7 +25,7 @@ class RPS:
         # A: rock, B: paper, C: scissors
         trantab = str.maketrans("XYZ", "ABC")
 
-        with open(f"d1/{inputs}", "r", encoding="UTF-8") as f:
+        with open(f"d2/{inputs}", "r", encoding="UTF-8") as f:
             inputs_processed = []
 
             for line in f.readlines():
