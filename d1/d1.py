@@ -99,8 +99,8 @@ def main():
     game.play()
 
     print("Total scores after tournament")
-    print(f"My score: {game.p1_score}")
-    print(f"Opponents score: {game.p2_score}")
+    print(f"Opponents score: {game.p1_score}")
+    print(f"My score: {game.p2_score}")
 
 
 if __name__ == "__main__":
