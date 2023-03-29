@@ -83,15 +83,15 @@ class Round:
     def calculate_outcome(self):
         """Calculates the outcome of the game."""
 
-        if self.choices[0] == self.choices[1]:
+        if self.choices[0] == self.choices[1]:  # Draw
             self.points[0] += 3
             self.points[1] += 3
             return self
 
-        if self.choices in (self.p1_winning_combinations):
+        if self.choices in (self.p1_winning_combinations):  # p1 win
             self.points[0] += 6
             return self
-        else:
+        else:  # p2 win
             self.points[1] += 6
             return self
 
